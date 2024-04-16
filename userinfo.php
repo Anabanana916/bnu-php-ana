@@ -1,9 +1,9 @@
 <?php 
 
     $servername = "localhost";
-    $username = "";
+    $username = "root";
     $password = "";
-    $database = "cw2co551"
+    $database = "cw2co551";
 
     $conn = new mysqli($servername, $username, $password, $database);
 
@@ -14,17 +14,17 @@
 
 
     //Ana, come back and see if you can work out the extra marks
-    $sql = "INSERT INTO student (studentid, password, dob, firstname, lastname, house) VALUES"
-            (12345678, 'banana2', 1998-12-06, 'Harold', 'Minsc', '16 Milkland Ave'),
-            (87654321, '2apples', 1993-10-20, 'Amy', 'Jones', '3 Walnut Street'),
-            (56784321, 'fruitsalad', 2000-05-01, 'Jamie', 'Baker', '73 Anderson Road')
-            (12435687, 'BakedApple23', 2001-09-13, 'Olli', 'Miller', '18 Butchers Road')
-            (85274196, 'BapplepIE32', 1999-10-27, 'Sam', 'Anderson', '100 Big Street');
+    $sql = "INSERT INTO student (studentid, password, dob, firstname, lastname, house) VALUES
+            (12345678, 'banana2', '1998-12-06', 'Harold', 'Minsc', '16 Milkland Ave'),
+            (87654321, '2apples', '1993-10-20', 'Amy', 'Jones', '3 Walnut Street'),
+            (56784321, 'fruitsalad', '2000-05-01', 'Jamie', 'Baker', '73 Anderson Road'),
+            (12435687, 'BakedApple23', '2001-09-13', 'Olli', 'Miller', '18 Butchers Road'),
+            (85274196, 'BapplepIE32', '1999-10-27', 'Sam', 'Anderson', '100 Big Street')";
 
-    if ($conn->multi_query($sql) === TRUE){
+    if ($conn->query($sql) === TRUE){
         echo "Complete";
     } else {
-        echo "Error" . $conn-error;
+        echo "Error" . $conn->error;
     }
 
     ?>
