@@ -6,11 +6,6 @@
     include("_includes/dbconnect.inc");
     include("_includes/functions.inc");
 
-    if (isset($_SESSION['id'])) {
-
-        echo template("templates/partials/header.php");
-        echo template("templates/partials/nav.php");
-
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['selected'])) {
@@ -37,15 +32,7 @@
                 }
             } 
         }
-
-    } else {
-        header("Location: index.php");
-     }
-     
-     echo template("templates/partials/footer.php");
-     
     ?>
-    
     <form method="POST" onsubmit="return confirm('Do you really want to delete selected rows?');">
         <table border="1">
             <thead>

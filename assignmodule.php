@@ -13,9 +13,10 @@ if (isset($_SESSION['id'])) {
 
    // If a module has been selected
    if (isset($_POST['selmodule'])) {
-      $sql = "insert into studentmodules values ('" .  $_SESSION['id'] . "','" . $_POST['selmodule'] . "');";
+      $sql = "INSERT into student values ('" .  $_SESSION['id'] . "','" . $_POST['selmodule'] . "');";
       $result = mysqli_query($conn, $sql);
       $data['content'] .= "<p>The module " . $_POST['selmodule'] . " has been assigned to you</p>";
+      
    }
    else  // If a module has not been selected
    {
