@@ -42,31 +42,29 @@ if (isset($_SESSION['id'])) {
    }
 
       $data['content'] = <<<EOD
-
-   <h2>Add new student</h2>
-   <form name="frmdetails" action="" method="post">
-   <!-- TO DO STUDENT ID-->
-   <!--<input type="hidden" name="studentid" value="" /><br/>-->
-   First Name :
-   <input name="firstname" type="text" value="" /><br/>
-   Surname :
-   <input name="lastname" type="text"  value="" /><br/>
-   Date of Birth (format: yyyy-mm-dd): :
-   <input name="dob" type="text"  value="" /><br/>
-   <!-- TO DO PASSWORD -->
-   Please create a password: 
-   <input type='text' name='password' value='' /><br/>
-   Number and Street :
-   <input name="house" type="text"  value="" /><br/>
-   Town :
-   <input name="town" type="text"  value="" /><br/>
-   County :
-   <input name="county" type="text"  value="" /><br/>
-   Country :
-   <input name="country" type="text"  value="" /><br/>
-   Postcode :
-   <input name="postcode" type="text"  value="" /><br/>
-   <input type="submit" value="Save" name="submit"/>
+   <h1 class='mt-5'>Add New Student</h1>
+   <form name="frmdetails" action="" method="post" class='mt-5'>
+      <div class='mb-3'>
+         <label class="form-label">First Name: </label>
+         <input name="firstname" type="text" class="form-control" value="" /><br/>
+         <label class="form-label">Surname: </label>
+         <input name="lastname" type="text"  class="form-control" value="" /><br/>
+         <label class="form-label">Date of Birth (format: yyyy-mm-dd): </label>
+         <input name="dob" type="text" class="form-control" value="" /><br/>
+         <label class="form-label">Please create a password: </label>
+         <input type="text" name="password" class="form-control" value='' /><br/>
+         <label class="form-label">Number and Street: </label>
+         <input name="house" type="text" class="form-control"  value="" /><br/>
+         <label class="form-label">Town: </label>
+         <input name="town" type="text" class="form-control" value="" /><br/>
+         <label class="form-label">County: </label>
+         <input name="county" type="text" class="form-control" value="" /><br/>
+         <label class="form-label">Country: </label>
+         <input name="country" type="text" class="form-control" value="" /><br/>
+         <label class="form-label">Postcode: </label>
+         <input name="postcode" type="text" class="form-control" value="" /><br/>
+         <input type="submit" value="Save" class="btn btn-primary" name="submit"/>
+      </div>
    </form>
 
 EOD;

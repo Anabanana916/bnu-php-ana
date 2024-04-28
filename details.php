@@ -40,24 +40,28 @@ if (isset($_SESSION['id'])) {
       // also http://stackoverflow.com/questions/8280360/formatting-an-array-value-inside-a-heredoc
       $data['content'] = <<<EOD
 
-   <h2>My Details</h2>
-   <form name="frmdetails" action="" method="post">
-   First Name :
-   <input name="txtfirstname" type="text" value="{$row['firstname']}" /><br/>
-   Surname :
-   <input name="txtlastname" type="text"  value="{$row['lastname']}" /><br/>
-   Number and Street :
-   <input name="txthouse" type="text"  value="{$row['house']}" /><br/>
-   Town :
-   <input name="txttown" type="text"  value="{$row['town']}" /><br/>
-   County :
-   <input name="txtcounty" type="text"  value="{$row['county']}" /><br/>
-   Country :
-   <input name="txtcountry" type="text"  value="{$row['country']}" /><br/>
-   Postcode :
-   <input name="txtpostcode" type="text"  value="{$row['postcode']}" /><br/>
-   <input type="submit" value="Save" name="submit"/>
+   <h2 class="mt-5">My Details</h2>
+      <div class='mb-3'>
+         <form name="frmdetails" action="" method="post" class="mt-5">
+         <label class="form-label">First Name: </label>
+         <input name="txtfirstname" type="text" class="form-control" value="{$row['firstname']}" /><br/>
+         <label class="form-label">Surname: </label>
+         <input name="txtlastname" type="text" class="form-control" value="{$row['lastname']}" /><br/>
+         <label class="form-label">Number and Street: </label>
+         <input name="txthouse" type="text" class="form-control" value="{$row['house']}" /><br/>
+         <label class="form-label">Town: </label>
+         <input name="txttown" type="text" class="form-control" value="{$row['town']}" /><br/>
+         <label class="form-label">County: </label>
+         <input name="txtcounty" type="text" class="form-control" value="{$row['county']}" /><br/>
+         <label class="form-label">Country: </label>
+         <input name="txtcountry" type="text" class="form-control" value="{$row['country']}" /><br/>
+         <label class="form-label">Postcode: </label>
+         <input name="txtpostcode" type="text" class="form-control" value="{$row['postcode']}" /><br/>
+         <input type="submit" value="Save" class="btn btn-primary" name="submit"/>
+      </div>
    </form>
+
+
 
 EOD;
 

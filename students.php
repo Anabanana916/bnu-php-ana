@@ -11,6 +11,7 @@
         echo template("templates/partials/header.php");
         echo template("templates/partials/nav.php");
 
+        echo '<h1 class="mt-5">Students</h1>';
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['selected'])) {
@@ -45,16 +46,16 @@
      echo template("templates/partials/footer.php");
      
     ?>
-    
+
     <form method="POST" onsubmit="return confirm('Do you really want to delete selected rows?');">
-        <table border="1">
+        <table class="table" border="2">
             <thead>
                 <tr>
-                    <th>StudentID</th>
-                    <th>DOB</th>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Select</th>
+                    <th scope ="col">StudentID</th>
+                    <th scope ="col">DOB</th>
+                    <th scope ="col">Name</th>
+                    <th scope ="col">Address</th>
+                    <th scope ="col">Select</th>
                 </tr>
             </thead>
             <tbody>
@@ -88,7 +89,7 @@
                 ?>
             </tbody>
             </table>
-            <input type="submit" value="Delete" name="Delete"/>
+            <input type="submit" value="Delete" class="btn btn-primary" name="Delete"/>
         </form>
     
     </body>
