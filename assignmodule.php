@@ -11,7 +11,7 @@ if (isset($_SESSION['id'])) {
    echo template("templates/partials/header.php");
    echo template("templates/partials/nav.php");
 
-   echo "<h1 class='mt-5'>Assign Modules</h1>";
+   echo "<h2 class='mt-5'>Assign Modules</h2>";
    // If a module has been selected
    if (isset($_POST['selmodule'])) {
       $sql = "INSERT into student values ('" .  $_SESSION['id'] . "','" . $_POST['selmodule'] . "');";

@@ -11,7 +11,7 @@
       echo template("templates/partials/header.php");
       echo template("templates/partials/nav.php");
 
-      echo "<h1 class='mt-5'>My Modules</h1>";
+      echo "<h2 class='mt-5'>My Modules</h2>";
 
       // Build SQL statment that selects a student's modules
       $sql = "select * from studentmodules sm, module m where m.modulecode = sm.modulecode and sm.studentid = '" . $_SESSION['id'] ."';";

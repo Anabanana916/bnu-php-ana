@@ -1,4 +1,4 @@
-<h1 class="mt-5">Login</h1>
+<h2 class="mt-5">Login</h2>
 
 <?php
 if (!empty($message)){

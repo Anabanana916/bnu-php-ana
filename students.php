@@ -1,6 +1,4 @@
-<html>
-    <body>
-    <?php
+<?php
 
     include("_includes/config.inc");
     include("_includes/dbconnect.inc");
@@ -11,21 +9,11 @@
         echo template("templates/partials/header.php");
         echo template("templates/partials/nav.php");
 
-        echo '<h1 class="mt-5">Students</h1>';
+        echo '<h2 class="mt-5">Students</h2>';
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['selected'])) {
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "cw2co551";
-
-            $conn = new mysqli($servername, $username, $password, $database);
-
-            //check connection
-                if ($conn->connect_error) {
-                    echo("Connection failed:" . $conn->connect_error);
-                }
+  
 
                 foreach($_POST['selected'] as $selected_id){
                     $sql = "DELETE FROM student WHERE studentid=$selected_id";
@@ -42,14 +30,12 @@
     } else {
         header("Location: index.php");
      }
-     
-     echo template("templates/partials/footer.php");
-     
+
     ?>
 
     <form method="POST" onsubmit="return confirm('Do you really want to delete selected rows?');">
-        <table class="table" border="2">
-            <thead>
+        <table class="mt-3 table table-striped-columns table-hover table-bordered border-dark'">
+            <thead colspan='5' class='table-primary table border-dark'>
                 <tr>
                     <th scope ="col">StudentID</th>
                     <th scope ="col">DOB</th>
@@ -58,20 +44,10 @@
                     <th scope ="col">Select</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-bordered border-dark">
                 <?php
 
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $database = "cw2co551";
 
-                    $conn = new mysqli($servername, $username, $password, $database);
-
-                    //check connection
-                    if ($conn->connect_error) {
-                        echo("Connection failed:" . $conn->connect_error);
-                    }
 
                     $sql = "SELECT * FROM student";
                     $result = $conn->query($sql);
@@ -92,6 +68,4 @@
             <input type="submit" value="Delete" class="btn btn-primary" name="Delete"/>
         </form>
     
-    </body>
-    
-</html>
+        <?php echo template("templates/partials/footer.php"); ?>
