@@ -4,7 +4,7 @@
          <a href="students.php">Students</a> |
          <a href="assignmodule.php">Assign Module</a> |
          <a href="details.php">My Details</a> |
-         <a href="addstudent2.php">Add Student</a> |
+         <a href="addstudent.php">Add Student</a> |
          <a href="logout.php">Logout</a>
    </div>
 </nav>
