@@ -14,6 +14,5 @@
             foreach ($_POST as $key => $value){
             	$_POST[$key] = mysqli_real_escape_string($conn, $value);
             }
-        var_dump($_POST);
     }
 ?>
