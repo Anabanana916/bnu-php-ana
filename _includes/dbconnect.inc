@@ -8,3 +8,12 @@
 	}
 
 ?>
+<?php
+    //<!--method of sql real escape security by looping through posts to check for sneaky characters-->
+    if (isset($_POST) && count($_POST) > 0) {
+            foreach ($_POST as $key => $value){
+            	$_POST[$key] = mysqli_real_escape_string($conn, $value);
+            }
+        var_dump($_POST);
+    }
+?>
