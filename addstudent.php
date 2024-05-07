@@ -24,6 +24,33 @@ if (isset($_SESSION['id'])) {
 
    // if the form has been submitted
    if (isset($_POST['submit'])) {
+      $imagePath = "";
+      if(isset($_FILES['studentimage']) && $_FILES['studentimage']['error'] == 0){
+         $fileTmpPath = $_FILES['studentimage']['tmp_name'];
+         $fileName = $_FILES['studentimage']['name'];
+         $fileSize = $_FILES['studentimage']['size'];
+         $fileType = $_FILES['studentimage']['type'];
+         $fileNameCmps = explode('.', $fileName);
+         $fileExtension = strtolower(end($fileNameCmps));
+         $imagedata = addslashes(fread(fopen($fileTmpPath, "r"), filesize($fileTmpPath)));
+
+         $allowedFileExtensions = ['jpg', 'png', 'jpeg'];
+            if (in_array($fileExtension, $allowedFileExtensions) && $fileSize < 40000000) {
+               $uploadFileDir = 'C:\xampp\htdocs\bnu-php-ana\StudentPics\\';
+               $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+               $dest_path = $uploadFileDir . $newFileName;
+               
+               if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                  $imagePath = $dest_path;
+               }
+               else {
+                  echo '<script>alert("Error moving file uploaded");</script>';
+               }
+            }
+            else {
+               echo '<script>alert("Invalid file type or size. Must be JPG, PNG or Jpeg.';
+            }
+      }
 
       //var_dump($_POST);
 
@@ -36,10 +63,10 @@ if (isset($_SESSION['id'])) {
          $data['content'] .= "Fields not filled";
       } else{
          //add INSERT statement
-         $sql = "INSERT INTO student (studentid, password, dob, firstname, lastname, house, town, county, country, postcode) VALUES
+         $sql = "INSERT INTO student (studentid, password, dob, firstname, lastname, house, town, county, country, postcode, studentimage) VALUES
             ('$studentID', '$hashed_password', '{$_POST['dob']}', '{$_POST['firstname']}',
             '{$_POST['lastname']}', '{$_POST['house']}', '{$_POST['town']}', '{$_POST['county']}',
-            '{$_POST['country']}', '{$_POST['postcode']}')";
+            '{$_POST['country']}', '{$_POST['postcode']}', '$imagedata')";
 
             //echo $sql
             $result = mysqli_query($conn,$sql);
@@ -50,7 +77,7 @@ if (isset($_SESSION['id'])) {
 
       $data['content'] .= <<<EOD
    <h2 class='mt-5'>Add New Student</h2>
-   <form name="frmdetails" action="" onsubmit="return confirm('Add new student to records?');" method="post" class='mt-5'>
+   <form name="frmdetails" action="" onsubmit="return confirm('Add new student to records?');" method="post" enctype="multipart/form-data" class='mt-5'>
       <div class='mb-3'>
          <label class="form-label">First Name: </label>
          <input name="firstname" type="text" class="form-control" value="" required/><br/>
@@ -70,6 +97,8 @@ if (isset($_SESSION['id'])) {
          <input name="country" type="text" class="form-control" value="" required/><br/>
          <label class="form-label">Postcode: </label>
          <input name="postcode" type="text" class="form-control" value="" required/><br/>
+         <label class="form-label">Picture: </label>
+         <input name="studentimage" type="file" class="form-control" value=""/><br/>
          <input type="submit" value="Save" class="btn btn-primary" name="submit"/>
       </div>
    </form>
